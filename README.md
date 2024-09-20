@@ -1,4 +1,4 @@
-# Python-Programmering-Said-Nakhleh
+# Python-Programming-Said-Nakhleh
 
 ### Detta repository ska innehålla mina koder och uppgifter för Python-programmering. 
 
