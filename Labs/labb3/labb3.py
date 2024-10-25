@@ -11,9 +11,12 @@ def read_data(unlabelled_data):
     
 def plotting_data(first_column, second_column):
     # en linje genom data
-    k, m = np.polyfit(first_column, second_column, 1)
+    k = -1
+    m = 0
+    X_values = np.linspace(min(first_column), max(first_column), 100)
+    y_values = k * X_values + m 
     plt.scatter(first_column, second_column, label = 'Data points')
-    plt.plot(first_column, k* first_column +m , color = 'blue', label = 'Fitted line')
+    plt.plot(X_values, y_values , color = 'blue', label = 'Fitted line')
     plt.xlabel('x')
     plt.ylabel('y')
     plt.legend()
@@ -21,7 +24,7 @@ def plotting_data(first_column, second_column):
     plt.show()
     
     # returerar linjens lutning 
-    return k, m 
+    return k , m 
 
 
 
@@ -43,7 +46,9 @@ def classify_points(data, first_column, second_column, k, m, output_file):
     data.to_csv(output_file, index = False)
         
     plt.scatter(data['first column'], data['second column'], c = data['label'], cmap ='viridis', label ='Classified Points')
-    plt.plot(first_column, k * first_column + m, color='blue', label=f'Fitted Line: y = {k:.2f}x + {m:.2f}')
+    X_values = np.linspace(min(first_column), max(first_column), 100)
+    y_values = k * X_values + m 
+    plt.plot(X_values, y_values, color='blue', label=f'Fitted Line: y = {k:.2f}x + {m:.2f}')
     plt.xlabel('x')
     plt.ylabel('y')
     plt.legend()
