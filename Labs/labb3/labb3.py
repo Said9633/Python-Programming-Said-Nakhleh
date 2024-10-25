@@ -4,10 +4,9 @@ import numpy as np
 
 
 def read_data(unlabelled_data):
-    data = pd.read_csv(unlabelled_data)
-    data.columns = ['first column', 'second column']
-    first_column = data['first column'].values
-    second_column = data['second column'].values
+    data = pd.read_csv(unlabelled_data, names = ['first column', 'second column'])
+    first_column = data.iloc[:, 0].values
+    second_column = data.iloc[:, 1].values
     return data, first_column, second_column
     
 def plotting_data(first_column, second_column):
